@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { RingsAnimation } from "@/components/rings-animation"
 import { Separator } from "@/components/ui/separator"
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -8,7 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { MapPin, Tent, BedDouble, Gift, Heart } from "lucide-react"
+import { MapPin, Tent, BedDouble, Gift, Heart, Infinity, Camera, Church, Wine, ChevronDown } from "lucide-react"
 
 export default function Home() {
   return (
@@ -16,8 +17,12 @@ export default function Home() {
 
       {/* ── HERO ── */}
       <section className="relative flex min-h-screen items-center justify-center px-6 text-center">
+
+        {/* ── BAGUES ANIMÉES ── */}
+        <RingsAnimation />
+
         <Image
-          src="/bg.png"
+          src="/bg.jpg"
           alt=""
           fill
           priority
@@ -43,6 +48,14 @@ export default function Home() {
             <p className="text-muted-foreground text-lg max-w-sm">
               Avec tout notre amour, nous vous souhaitons la bienvenue sur notre site de mariage.
             </p>
+            {/* Indication de défilement — même style que la ligne du programme */}
+            <div className="mt-8 flex flex-col items-center">
+              <div className="flex flex-col items-center" aria-hidden="true">
+                <div className="h-14 w-px bg-stone-300" />
+                <ChevronDown className="size-5 -mt-px text-stone-400" strokeWidth={2} />
+              </div>
+              <span className="sr-only">Faire défiler la page pour voir la suite</span>
+            </div>
           </div>
           <Image
             src="/lois.png"
@@ -54,11 +67,52 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── PROGRAMME DE LA JOURNÉE ── */}
+      <section className="flex flex-col items-center px-6 py-24 bg-[#faf8f5]">
+        <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-2">Le grand jour</p>
+        <h2 className="font-serif text-3xl font-light mb-10 text-foreground">Programme</h2>
+        <div className="relative flex flex-col items-center">
+          {/* ligne verticale */}
+          <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-stone-300" />
+
+          {[
+            { time: "14h00", label: "Mairie de Thonon-les-Bains", href: "#mairie" },
+            { time: "15h00", label: "Séance photo",               href: "#seance-photo" },
+            { time: "16h00", label: "Accueil au domaine",          href: "#domaine" },
+            { time: "16h30", label: "Cérémonie laïque",            href: "#ceremonie" },
+            { time: "18h00", label: "Vin d'honneur",               href: "#vin-honneur" },
+          ].map(({ time, label, href }) => (
+            <div key={time} className="relative flex items-center w-80 sm:w-[420px] mb-10 last:mb-0">
+              <div className="flex-1 text-right pr-6">
+                <a href={href} className="group block">
+                  <span className="font-serif text-lg text-foreground group-hover:text-stone-500 transition-colors">{time}</span>
+                  <p className="text-sm text-muted-foreground leading-snug group-hover:underline underline-offset-2">{label}</p>
+                </a>
+              </div>
+              <a href={href} aria-label={label} className="relative z-10 shrink-0 size-3 rounded-full bg-stone-400 border-2 border-white shadow hover:bg-stone-600 hover:scale-125 transition-all" />
+              <div className="flex-1 pl-6" />
+            </div>
+          ))}
+
+          {/* dernier élément : infini */}
+          <div className="relative flex items-center w-80 sm:w-[420px]">
+            <div className="flex-1 text-right pr-6">
+              <a href="#cagnotte" className="group block">
+                <Infinity className="inline size-5 text-stone-400 mb-1 group-hover:text-stone-600 transition-colors" />
+                <p className="text-sm text-muted-foreground leading-snug group-hover:underline underline-offset-2">Un maximum d'amour</p>
+              </a>
+            </div>
+            <a href="#cagnotte" aria-label="Un maximum d'amour" className="relative z-10 shrink-0 size-3 rounded-full bg-stone-300 border-2 border-white shadow hover:bg-stone-500 hover:scale-125 transition-all" />
+            <div className="flex-1 pl-6" />
+          </div>
+        </div>
+      </section>
+
       {/* ── SECTIONS ── */}
       <div className="flex flex-col gap-0 bg-[#faf8f5]">
 
         {/* ── MAIRIE ── */}
-        <section className="flex flex-col items-center px-6 py-20 text-center max-w-2xl mx-auto w-full">
+        <section id="mairie" className="flex flex-col items-center px-6 py-20 text-center max-w-2xl mx-auto w-full">
           <div className="flex items-center justify-center size-12 rounded-full bg-stone-100 mb-6">
             <MapPin className="size-5 text-stone-500" />
           </div>
@@ -80,20 +134,36 @@ export default function Home() {
 
         <Separator className="max-w-xs mx-auto" />
 
-        {/* ── CAMPING ── */}
-        <section className="flex flex-col items-center px-6 py-20 text-center w-full">
+        {/* ── SÉANCE PHOTO ── */}
+        <section id="seance-photo" className="flex flex-col items-center px-6 py-20 text-center max-w-2xl mx-auto w-full">
+          <div className="flex items-center justify-center size-12 rounded-full bg-stone-100 mb-6">
+            <Camera className="size-5 text-stone-500" />
+          </div>
+          <h2 className="font-serif text-3xl font-light mb-4">Séance photo</h2>
+          <Separator className="w-16 mb-6" />
+          <p className="text-muted-foreground text-base leading-relaxed">
+            À <strong className="text-foreground">15h00</strong>, place à la séance photo !
+            Un photographe capturera ces instants précieux en famille et entre amis.
+          </p>
+          <p className="text-muted-foreground text-sm mt-4">
+            Retrouvez les photos après le mariage dans la galerie du site.
+          </p>
+        </section>
+
+        <Separator className="max-w-xs mx-auto" />
+
+        {/* ── ACCUEIL AU DOMAINE ── */}
+        <section id="domaine" className="flex flex-col items-center px-6 py-20 text-center w-full">
           <div className="flex items-center justify-center size-12 rounded-full bg-stone-100 mb-6">
             <Tent className="size-5 text-stone-500" />
           </div>
-          <h2 className="font-serif text-3xl font-light mb-4">Camping sur le domaine</h2>
+          <h2 className="font-serif text-3xl font-light mb-4">Accueil au domaine</h2>
           <Separator className="w-16 mb-6" />
           <p className="text-muted-foreground text-base leading-relaxed max-w-xl">
-            Un champ situé sur le domaine sera disponible pour camper à la fin de la soirée.
-            Vous pouvez venir avec votre matériel de camping et vous installer quand vous
-            le souhaitez !
+            À partir de <strong className="text-foreground">16h00</strong>, rejoignez-nous au domaine.
+            Un champ sera également disponible pour camper à la fin de la soirée — venez avec votre matériel !
           </p>
 
-          {/* Carrousel camping */}
           <div className="relative w-full max-w-2xl mt-10">
             <Carousel opts={{ loop: true }}>
               <CarouselContent>
@@ -124,8 +194,41 @@ export default function Home() {
 
         <Separator className="max-w-xs mx-auto" />
 
+        {/* ── CÉRÉMONIE LAÏQUE ── */}
+        <section id="ceremonie" className="flex flex-col items-center px-6 py-20 text-center max-w-2xl mx-auto w-full">
+          <div className="flex items-center justify-center size-12 rounded-full bg-stone-100 mb-6">
+            <Church className="size-5 text-stone-500" />
+          </div>
+          <h2 className="font-serif text-3xl font-light mb-4">Cérémonie laïque</h2>
+          <Separator className="w-16 mb-6" />
+          <p className="text-muted-foreground text-base leading-relaxed">
+            À <strong className="text-foreground">16h30</strong>, nous vous invitons à partager
+            avec nous ce moment unique et intime où nous prononcerons nos vœux.
+          </p>
+          <p className="text-muted-foreground text-sm mt-4">
+            Installez-vous confortablement — des surprises vous attendent.
+          </p>
+        </section>
+
+        <Separator className="max-w-xs mx-auto" />
+
+        {/* ── VIN D'HONNEUR ── */}
+        <section id="vin-honneur" className="flex flex-col items-center px-6 py-20 text-center max-w-2xl mx-auto w-full">
+          <div className="flex items-center justify-center size-12 rounded-full bg-stone-100 mb-6">
+            <Wine className="size-5 text-stone-500" />
+          </div>
+          <h2 className="font-serif text-3xl font-light mb-4">Vin d'honneur</h2>
+          <Separator className="w-16 mb-6" />
+          <p className="text-muted-foreground text-base leading-relaxed">
+            Dès <strong className="text-foreground">18h00</strong>, retrouvez-nous pour le vin d'honneur.
+            Un moment de convivialité pour trinquer, rire et profiter ensemble.
+          </p>
+        </section>
+
+        <Separator className="max-w-xs mx-auto" />
+
         {/* ── CAGNOTTE ── */}
-        <section className="flex flex-col items-center px-6 py-20 text-center max-w-2xl mx-auto w-full">
+        <section id="cagnotte" className="flex flex-col items-center px-6 py-20 text-center max-w-2xl mx-auto w-full">
           <div className="flex items-center justify-center size-12 rounded-full bg-stone-100 mb-6">
             <Gift className="size-5 text-stone-500" />
           </div>

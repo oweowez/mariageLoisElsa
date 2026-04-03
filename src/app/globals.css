@@ -1,4 +1,21 @@
 @import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+@keyframes rings-swing-only {
+  0%   { transform: translateY(0px) rotate(0deg); }
+  20%  { transform: translateY(0px) rotate(22deg); }
+  38%  { transform: translateY(0px) rotate(-14deg); }
+  52%  { transform: translateY(0px) rotate(8deg); }
+  64%  { transform: translateY(0px) rotate(-4deg); }
+  75%  { transform: translateY(0px) rotate(2deg); }
+  87%  { transform: translateY(0px) rotate(-1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 

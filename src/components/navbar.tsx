@@ -20,21 +20,18 @@ export function Navbar() {
   const pathname = usePathname()
 
   return (
-    <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
+    <header className="relative z-50 flex justify-center px-4 pt-4">
       <div
-        className="pointer-events-auto flex w-4/5 items-center justify-between rounded-2xl border border-stone-200/60 bg-[#f5f0e8]/90 backdrop-blur-md shadow-lg px-5 py-3"
+        className="flex w-fit max-w-full items-center justify-center border-0 border-b-2 border-b-[#D4AF62] bg-white px-3 py-2 shadow-none"
       >
-        <span className="font-serif text-lg tracking-wide text-foreground/70 italic">
-          Elsa &amp; Loïs
-        </span>
         <NavigationMenu>
-          <NavigationMenuList className="gap-4">
+          <NavigationMenuList className="gap-1 sm:gap-2">
             {navLinks.map(({ href, label }) => (
               <NavigationMenuItem key={href}>
                 <NavigationMenuLink
                   active={pathname === href}
                   render={<Link href={href} />}
-                  className={`${navigationMenuTriggerStyle()} font-[family-name:var(--font-cormorant)] text-base tracking-wider`}
+                  className={`${navigationMenuTriggerStyle()} font-[family-name:var(--font-cormorant)] text-base tracking-wider text-stone-700 hover:bg-[#D4AF62]/10 hover:text-[#D4AF62] focus:bg-[#D4AF62]/10 data-active:bg-transparent data-active:hover:bg-transparent data-active:focus:bg-transparent data-active:text-[#D4AF62] data-active:font-bold`}
                 >
                   {label}
                 </NavigationMenuLink>

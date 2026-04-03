@@ -34,7 +34,7 @@ export default function RootLayout({
       lang="fr"
       className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col pt-20">
+      <body className="min-h-full flex flex-col">
         <Navbar />
         {children}
       </body>
