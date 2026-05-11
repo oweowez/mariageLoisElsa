@@ -1,6 +1,3 @@
-import Image from "next/image"
-import { RingsAnimation } from "@/components/rings-animation"
-import { Separator } from "@/components/ui/separator"
 import { Card, CardContent } from "@/components/ui/card"
 import {
   Carousel,
@@ -9,7 +6,36 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { MapPin, Tent, BedDouble, Gift, Heart, Infinity, Camera, Church, Wine, ChevronDown } from "lucide-react"
+import { Separator } from "@/components/ui/separator"
+import { RingsAnimation } from "@/components/rings-animation"
+import {
+  Baby,
+  BedDouble,
+  ChevronDown,
+  Gift,
+  Grape,
+  Heart,
+  Infinity,
+  Landmark,
+  ParkingCircle,
+  Tent,
+} from "lucide-react"
+import Image from "next/image"
+
+const domainImages = [
+  {
+    src: "/domaine/09ea0678e53fa7d99606e4aad9c6e47db9b36af469aa33698173c1ee6aba2816.jpg",
+    alt: "Vue du ciel du domaine et des espaces extérieurs",
+  },
+  {
+    src: "/domaine/1739555101_67af811d7638d-m.jpg",
+    alt: "Le domaine",
+  },
+  {
+    src: "/domaine/20180611_155125.jpg",
+    alt: "Le champ de camping",
+  },
+]
 
 export default function Home() {
   return (
@@ -76,11 +102,9 @@ export default function Home() {
           <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-stone-300" />
 
           {[
-            { time: "14h00", label: "Mairie de Thonon-les-Bains", href: "#mairie" },
-            { time: "15h00", label: "Séance photo",               href: "#seance-photo" },
-            { time: "16h00", label: "Accueil au domaine",          href: "#domaine" },
-            { time: "16h30", label: "Cérémonie laïque",            href: "#ceremonie" },
-            { time: "18h00", label: "Vin d'honneur",               href: "#vin-honneur" },
+            { time: "14h00", label: "Rendez-vous à la mairie", href: "#mairie" },
+            { time: "Après la mairie", label: "Départ vers le domaine", href: "#domaine" },
+            { time: "Sur place", label: "Camping, enfants et rafraîchissements", href: "#camping" },
           ].map(({ time, label, href }) => (
             <div key={time} className="relative flex items-center w-80 sm:w-[420px] mb-10 last:mb-0">
               <div className="flex-1 text-right pr-6">
@@ -99,7 +123,7 @@ export default function Home() {
             <div className="flex-1 text-right pr-6">
               <a href="#cagnotte" className="group block">
                 <Infinity className="inline size-5 text-stone-400 mb-1 group-hover:text-stone-600 transition-colors" />
-                <p className="text-sm text-muted-foreground leading-snug group-hover:underline underline-offset-2">Un maximum d'amour</p>
+                <p className="text-sm text-muted-foreground leading-snug group-hover:underline underline-offset-2">Un maximum d&apos;amour</p>
               </a>
             </div>
             <a href="#cagnotte" aria-label="Un maximum d'amour" className="relative z-10 shrink-0 size-3 rounded-full bg-stone-300 border-2 border-white shadow hover:bg-stone-500 hover:scale-125 transition-all" />
@@ -114,39 +138,16 @@ export default function Home() {
         {/* ── MAIRIE ── */}
         <section id="mairie" className="flex flex-col items-center px-6 py-20 text-center max-w-2xl mx-auto w-full">
           <div className="flex items-center justify-center size-12 rounded-full bg-stone-100 mb-6">
-            <MapPin className="size-5 text-stone-500" />
+            <Landmark className="size-5 text-stone-500" />
           </div>
-          <h2 className="font-serif text-3xl font-light mb-4">Cérémonie à la Mairie</h2>
+          <h2 className="font-serif text-3xl font-light mb-4">Mairie 🏛</h2>
           <Separator className="w-16 mb-6" />
           <p className="text-muted-foreground text-base leading-relaxed">
-            La cérémonie civile aura lieu à <strong className="text-foreground">14h00</strong>.
-            Merci de vous y présenter <strong className="text-foreground">15 minutes à l'avance</strong>.
+            Rendez-vous à <strong className="text-foreground">14h</strong> à la mairie.
+            Venez <strong className="text-foreground">15 minutes avant</strong> afin que nous puissions tous nous réunir.
           </p>
           <p className="text-muted-foreground text-sm mt-4">
-            Des salles intérieures (chambres d'hôtes du domaine) seront disponibles pour coucher
-            les plus petits si vous le souhaitez.
-          </p>
-          <div className="flex items-center gap-2 mt-5 text-stone-400">
-            <BedDouble className="size-4" />
-            <span className="text-sm">Chambres d'hôtes disponibles pour les enfants</span>
-          </div>
-        </section>
-
-        <Separator className="max-w-xs mx-auto" />
-
-        {/* ── SÉANCE PHOTO ── */}
-        <section id="seance-photo" className="flex flex-col items-center px-6 py-20 text-center max-w-2xl mx-auto w-full">
-          <div className="flex items-center justify-center size-12 rounded-full bg-stone-100 mb-6">
-            <Camera className="size-5 text-stone-500" />
-          </div>
-          <h2 className="font-serif text-3xl font-light mb-4">Séance photo</h2>
-          <Separator className="w-16 mb-6" />
-          <p className="text-muted-foreground text-base leading-relaxed">
-            À <strong className="text-foreground">15h00</strong>, place à la séance photo !
-            Un photographe capturera ces instants précieux en famille et entre amis.
-          </p>
-          <p className="text-muted-foreground text-sm mt-4">
-            Retrouvez les photos après le mariage dans la galerie du site.
+            À la sortie de la mairie, les mariés iront faire une petite séance photo au belvédère en petit comité.
           </p>
         </section>
 
@@ -155,23 +156,28 @@ export default function Home() {
         {/* ── ACCUEIL AU DOMAINE ── */}
         <section id="domaine" className="flex flex-col items-center px-6 py-20 text-center w-full">
           <div className="flex items-center justify-center size-12 rounded-full bg-stone-100 mb-6">
-            <Tent className="size-5 text-stone-500" />
+            <Grape className="size-5 text-stone-500" />
           </div>
-          <h2 className="font-serif text-3xl font-light mb-4">Accueil au domaine</h2>
+          <h2 className="font-serif text-3xl font-light mb-4">Le domaine 🍇</h2>
           <Separator className="w-16 mb-6" />
-          <p className="text-muted-foreground text-base leading-relaxed max-w-xl">
-            À partir de <strong className="text-foreground">16h00</strong>, rejoignez-nous au domaine.
-            Un champ sera également disponible pour camper à la fin de la soirée — venez avec votre matériel !
+          <p className="text-muted-foreground text-base leading-relaxed max-w-2xl">
+            Après la sortie des mariés, tout le monde se dirige vers le domaine,{" "}
+            <strong className="text-foreground">501 chemin de Senoche, 74140 Ballaison</strong>.
           </p>
+          <div className="mt-6 grid gap-3 text-left text-sm text-muted-foreground sm:grid-cols-2">
+            <div className="rounded-2xl bg-white/70 p-4">
+              Des rafraîchissements vous attendent le temps de l&apos;arrivée des mariés.
+            </div>
+            <div className="rounded-2xl bg-white/70 p-4">
+              <ParkingCircle className="mb-2 size-4 text-stone-500" />
+              Vous pourrez vous garer sur place selon les indications.
+            </div>
+          </div>
 
           <div className="relative w-full max-w-2xl mt-10">
             <Carousel opts={{ loop: true }}>
               <CarouselContent>
-                {[
-                  { src: "/domaine/09ea0678e53fa7d99606e4aad9c6e47db9b36af469aa33698173c1ee6aba2816.jpg", alt: "Vue du ciel du lieu de camping" },
-                  { src: "/domaine/1739555101_67af811d7638d-m.jpg", alt: "Le domaine" },
-                  { src: "/domaine/20180611_155125.jpg", alt: "Le champ de camping" },
-                ].map((img) => (
+                {domainImages.map((img) => (
                   <CarouselItem key={img.alt}>
                     <Card className="overflow-hidden border-0 shadow-md rounded-2xl p-0 gap-0">
                       <CardContent className="p-0 relative h-72 sm:h-96">
@@ -190,39 +196,46 @@ export default function Home() {
               <CarouselNext className="right-2" />
             </Carousel>
           </div>
+          <p className="mt-4 max-w-xl text-sm text-muted-foreground">
+            Les vues du ciel permettront de repérer l&apos;accès, le parking et les espaces prévus.
+          </p>
         </section>
 
         <Separator className="max-w-xs mx-auto" />
 
-        {/* ── CÉRÉMONIE LAÏQUE ── */}
-        <section id="ceremonie" className="flex flex-col items-center px-6 py-20 text-center max-w-2xl mx-auto w-full">
+        {/* ── CAMPING ── */}
+        <section id="camping" className="flex flex-col items-center px-6 py-20 text-center max-w-2xl mx-auto w-full">
           <div className="flex items-center justify-center size-12 rounded-full bg-stone-100 mb-6">
-            <Church className="size-5 text-stone-500" />
+            <Tent className="size-5 text-stone-500" />
           </div>
-          <h2 className="font-serif text-3xl font-light mb-4">Cérémonie laïque</h2>
+          <h2 className="font-serif text-3xl font-light mb-4">Le Camping ⛺</h2>
           <Separator className="w-16 mb-6" />
           <p className="text-muted-foreground text-base leading-relaxed">
-            À <strong className="text-foreground">16h30</strong>, nous vous invitons à partager
-            avec nous ce moment unique et intime où nous prononcerons nos vœux.
+            Un champ faisant partie du domaine sera à disposition pour ceux qui souhaitent camper sur place.
+            On sera aussi avec nos tentes ;)
           </p>
           <p className="text-muted-foreground text-sm mt-4">
-            Installez-vous confortablement — des surprises vous attendent.
+            Vous pouvez venir avec votre tente et l&apos;installer pendant la journée quand vous pouvez !
           </p>
         </section>
 
         <Separator className="max-w-xs mx-auto" />
 
-        {/* ── VIN D'HONNEUR ── */}
-        <section id="vin-honneur" className="flex flex-col items-center px-6 py-20 text-center max-w-2xl mx-auto w-full">
+        {/* ── ENFANTS ── */}
+        <section id="enfants" className="flex flex-col items-center px-6 py-20 text-center max-w-2xl mx-auto w-full">
           <div className="flex items-center justify-center size-12 rounded-full bg-stone-100 mb-6">
-            <Wine className="size-5 text-stone-500" />
+            <Baby className="size-5 text-stone-500" />
           </div>
-          <h2 className="font-serif text-3xl font-light mb-4">Vin d'honneur</h2>
+          <h2 className="font-serif text-3xl font-light mb-4">Pour les plus petits 🧸</h2>
           <Separator className="w-16 mb-6" />
           <p className="text-muted-foreground text-base leading-relaxed">
-            Dès <strong className="text-foreground">18h00</strong>, retrouvez-nous pour le vin d'honneur.
-            Un moment de convivialité pour trinquer, rire et profiter ensemble.
+            Des chambres d&apos;hôtes situées dans le domaine seront utilisées pour installer les plus petits durant
+            la journée et la soirée.
           </p>
+          <div className="flex items-center gap-2 mt-5 text-stone-400">
+            <BedDouble className="size-4" />
+            <span className="text-sm">Une salle dédiée aux enfants leur permettra aussi d&apos;avoir leur espace à eux.</span>
+          </div>
         </section>
 
         <Separator className="max-w-xs mx-auto" />
@@ -235,22 +248,20 @@ export default function Home() {
           <h2 className="font-serif text-3xl font-light mb-4">Cagnotte voyage</h2>
           <Separator className="w-16 mb-6" />
           <p className="text-muted-foreground text-base leading-relaxed mb-8">
-            Si vous souhaitez nous offrir un cadeau, nous avons ouvert une cagnotte pour
-            notre voyage de noces. Chaque contribution, petite ou grande, nous touchera
-            infiniment.
+            Votre présence à nos côtés est déjà le plus beau des cadeaux.
+            Mais pour celles et ceux qui le souhaitent, nous avons mis en place une cagnotte afin de nous aider
+            à réaliser notre voyage de noces.
           </p>
           <a
-            href="https://cagnotte.fr"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#cagnotte"
             className="inline-flex items-center gap-2 rounded-full bg-stone-800 px-7 py-3 text-sm font-medium text-white transition-colors hover:bg-stone-700"
           >
             <Heart className="size-4" />
-            Contribuer à la cagnotte
+            Lien vers la cagnotte à venir
           </a>
           <p className="text-muted-foreground text-sm mt-6 max-w-sm">
-            Une urne sera également disponible sur place pour ceux qui souhaiteraient
-            glisser une lettre ou une enveloppe. 💌
+            Nous aurons également une urne le jour J pour ceux qui préfèrent nous laisser une enveloppe,
+            ou bien un petit mot, une lettre ou une jolie attention.
           </p>
         </section>
 

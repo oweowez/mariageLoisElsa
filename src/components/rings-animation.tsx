@@ -68,12 +68,15 @@ export function RingsAnimation() {
     const ringsGrp  = ringsGroupRef.current
     const pendulum  = pendulumRef.current
     if (!rope || !ringsGrp || !pendulum) return
+    const ropeEl = rope
+    const ringsGroupEl = ringsGrp
+    const pendulumEl = pendulum
 
     // État initial : fil invisible, bagues à y=0 (derrière la navbar)
     const RINGS_CY = 142  // cy des bagues dans le SVG
-    rope.style.strokeDasharray  = `${THREAD_LEN}`
-    rope.style.strokeDashoffset = `${THREAD_LEN}`
-    ringsGrp.setAttribute("transform", `translate(0, ${-RINGS_CY})`)
+    ropeEl.style.strokeDasharray  = `${THREAD_LEN}`
+    ropeEl.style.strokeDashoffset = `${THREAD_LEN}`
+    ringsGroupEl.setAttribute("transform", `translate(0, ${-RINGS_CY})`)
 
     let rafId: number
     let cancelSwingRope: (() => void) | null = null
@@ -81,40 +84,38 @@ export function RingsAnimation() {
 
     // ── Phase 1 : déroulement ──
     let unrollStart: number | null = null
-    let startTimeout: ReturnType<typeof setTimeout>
-
     function tickUnroll(now: number) {
       unrollStart ??= now
       const raw = Math.min((now - unrollStart) / UNROLL_MS, 1)
       const p   = easeOut(raw)
 
-      rope.style.strokeDashoffset = `${THREAD_LEN * (1 - p)}`
+      ropeEl.style.strokeDashoffset = `${THREAD_LEN * (1 - p)}`
       // les bagues descendent de y=0 jusqu'à leur position naturelle
-      ringsGrp.setAttribute("transform", `translate(0, ${RINGS_CY * (p - 1)})`)
+      ringsGroupEl.setAttribute("transform", `translate(0, ${RINGS_CY * (p - 1)})`)
 
       if (raw < 1) {
         rafId = requestAnimationFrame(tickUnroll)
       } else {
         // Déroulement terminé — préparer le balancement
-        rope.style.strokeDasharray  = ""
-        rope.style.strokeDashoffset = ""
-        rope.setAttribute("d", `M 50 0 C 50 39 50 82 50 ${THREAD_LEN}`)
-        ringsGrp.removeAttribute("transform")
+        ropeEl.style.strokeDasharray  = ""
+        ropeEl.style.strokeDashoffset = ""
+        ropeEl.setAttribute("d", `M 50 0 C 50 39 50 82 50 ${THREAD_LEN}`)
+        ringsGroupEl.removeAttribute("transform")
         startSwing()
       }
     }
 
-    startTimeout = setTimeout(() => {
+    const startTimeout = setTimeout(() => {
       rafId = requestAnimationFrame(tickUnroll)
     }, 1000)
 
     // ── Phase 2 : balancement (immédiat puis toutes les REPEAT_MS) ──
     function triggerSwing() {
       cancelSwingRope?.()
-      cancelSwingRope = animateRope(rope, ROPE_SWING_KF, SWING_MS)
-      pendulum.style.animation = "none"
-      pendulum.getClientRects()   // force reflow
-      pendulum.style.animation = `rings-swing-only ${SWING_MS}ms cubic-bezier(0.33,1,0.68,1) forwards`
+      cancelSwingRope = animateRope(ropeEl, ROPE_SWING_KF, SWING_MS)
+      pendulumEl.style.animation = "none"
+      pendulumEl.getClientRects()   // force reflow
+      pendulumEl.style.animation = `rings-swing-only ${SWING_MS}ms cubic-bezier(0.33,1,0.68,1) forwards`
     }
 
     function startSwing() {
