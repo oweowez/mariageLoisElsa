@@ -39,7 +39,7 @@ export default function Home() {
         <RingsAnimation />
 
 
-        <div className="flex flex-col items-center gap-6 sm:flex-row sm:gap-8">
+        <div className="flex flex-col items-center gap-6 sm:flex-row sm:gap-8 pt-36 sm:pt-0">
           <Image
             src="/elsa.png"
             alt="Elsa"
