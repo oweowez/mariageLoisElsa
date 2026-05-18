@@ -23,7 +23,7 @@ export function Navbar() {
   return (
     <header className="relative z-50 flex justify-center px-4 pt-4">
       <div
-        className="flex w-fit max-w-full items-center justify-center border-0 border-b-2 border-b-[#D4AF62] bg-white px-3 py-2 shadow-none"
+        className="flex w-full sm:w-fit max-w-full items-center justify-center border-0 border-b-2 border-b-[#D4AF62] bg-white px-3 py-2 shadow-none"
       >
         <NavigationMenu>
           <NavigationMenuList className="gap-1 sm:gap-2">

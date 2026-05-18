@@ -197,11 +197,11 @@ export default function Home() {
             501 chemin de Senoche, 74140 Ballaison
           </p>
           <div className="grid gap-4 text-left text-base text-stone-500 sm:grid-cols-2 max-w-xl w-full">
-            <div className="rounded-2xl bg-white p-5 shadow-sm border border-stone-100">
+            <div className="rounded-2xl bg-white p-5 shadow border border-stone-200" style={{ backgroundColor: "white" }}>
               <p className="text-stone-400 text-xs uppercase tracking-widest mb-2">À votre arrivée</p>
               Des rafraîchissements vous attendent le temps de l&apos;arrivée des mariés.
             </div>
-            <div className="rounded-2xl bg-white p-5 shadow-sm border border-stone-100">
+            <div className="rounded-2xl bg-white p-5 shadow border border-stone-200" style={{ backgroundColor: "white" }}>
               <p className="text-stone-400 text-xs uppercase tracking-widest mb-2">Parking</p>
               Vous pourrez vous garer sur place selon les indications prévues.
             </div>

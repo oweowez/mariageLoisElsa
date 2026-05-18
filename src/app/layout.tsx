@@ -41,7 +41,7 @@ export default function RootLayout({
           alt=""
           fill
           priority
-          className="object-cover object-center -z-10 fixed pointer-events-none"
+          className="hidden sm:block object-cover object-center -z-10 fixed pointer-events-none"
         />
         <Navbar />
         {children}
