@@ -47,13 +47,7 @@ export default function Home() {
         {/* ── BAGUES ANIMÉES ── */}
         <RingsAnimation />
 
-        <Image
-          src="/bg.jpg"
-          alt=""
-          fill
-          priority
-          className="object-cover object-center -z-10 !top-[-80px] !w-[110%] !left-1/2 !-translate-x-1/2 opacity-100"
-        />
+
         <div className="flex items-center gap-8">
           <Image
             src="/elsa.png"
@@ -94,7 +88,7 @@ export default function Home() {
       </section>
 
       {/* ── PROGRAMME DE LA JOURNÉE ── */}
-      <section className="flex flex-col items-center px-6 py-24 bg-[#faf8f5]">
+      <section className="flex flex-col items-center px-6 py-24">
 
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-2 w-full max-w-4xl justify-center">
 
@@ -152,24 +146,27 @@ export default function Home() {
       </section>
 
       {/* ── SECTIONS ── */}
-      <div className="flex flex-col gap-0 bg-[#faf8f5]">
+      <div className="flex flex-col gap-0">
 
         {/* ── MAIRIE ── */}
         <section id="mairie" className="flex flex-col lg:flex-row-reverse items-center lg:items-start gap-12 px-6 py-20 max-w-4xl mx-auto w-full">
 
           {/* Texte */}
-          <div className="flex flex-col items-center text-center lg:items-center lg:text-center flex-1 pt-2">
-            <div className="flex items-center justify-center size-12 rounded-full bg-stone-100 mb-6">
-              <Landmark className="size-5 text-stone-500" />
+          <div className="flex flex-col items-start text-left flex-1 pt-2">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center justify-center size-10 rounded-full bg-stone-100">
+                <Landmark className="size-4 text-stone-500" />
+              </div>
+              <p className="text-xs uppercase tracking-[0.25em] text-stone-400">Le grand jour · 14h00</p>
             </div>
-            <h2 className="font-serif text-3xl font-light mb-4">Mairie</h2>
-            <Separator className="w-16 mb-6" />
-            <p className="text-muted-foreground text-base leading-relaxed">
-              Rendez-vous à <strong className="text-foreground">14h</strong> à la mairie.
-              Venez <strong className="text-foreground">15 minutes avant</strong> afin que nous puissions tous nous réunir.
+            <h2 className="font-serif text-4xl font-light mb-5 text-foreground leading-snug">Cérémonie<br />à la Mairie</h2>
+            <div className="w-12 h-px bg-stone-300 mb-6" />
+            <p className="text-stone-600 text-lg leading-loose mb-4">
+              Rendez-vous à <strong className="text-stone-900 font-semibold">14h</strong> à la mairie.
+              Merci de venir <strong className="text-stone-900 font-semibold">15 minutes avant</strong> afin que nous puissions tous nous réunir avant d&apos;entrer.
             </p>
-            <p className="text-muted-foreground text-sm mt-4">
-              À la sortie de la mairie, les mariés iront faire une petite séance photo au belvédère en petit comité.
+            <p className="text-stone-400 text-sm leading-relaxed border-l-2 border-stone-200 pl-4">
+              À la sortie, les mariés iront faire une petite séance photo au belvédère en petit comité — rejoignez-les ensuite au domaine.
             </p>
           </div>
 
@@ -190,22 +187,26 @@ export default function Home() {
 
         {/* ── ACCUEIL AU DOMAINE ── */}
         <section id="domaine" className="flex flex-col items-center px-6 py-20 text-center w-full">
-          <div className="flex items-center justify-center size-12 rounded-full bg-stone-100 mb-6">
-            <Grape className="size-5 text-stone-500" />
+          <div className="flex items-center justify-center size-10 rounded-full bg-stone-100 mb-5">
+            <Grape className="size-4 text-stone-500" />
           </div>
-          <h2 className="font-serif text-3xl font-light mb-4">Le domaine 🍇</h2>
-          <Separator className="w-16 mb-6" />
-          <p className="text-muted-foreground text-base leading-relaxed max-w-2xl">
-            Après la sortie des mariés, tout le monde se dirige vers le domaine,{" "}
-            <strong className="text-foreground">501 chemin de Senoche, 74140 Ballaison</strong>.
+          <p className="text-xs uppercase tracking-[0.25em] text-stone-400 mb-3">Après la mairie</p>
+          <h2 className="font-serif text-4xl font-light mb-5 text-foreground">Le domaine 🍇</h2>
+          <div className="w-12 h-px bg-stone-300 mb-7" />
+          <p className="text-stone-600 text-lg leading-loose max-w-xl mb-2">
+            Après la sortie des mariés, tout le monde se dirige vers le domaine.
           </p>
-          <div className="mt-6 grid gap-3 text-left text-sm text-muted-foreground sm:grid-cols-2">
-            <div className="rounded-2xl bg-white/70 p-4">
+          <p className="text-stone-900 font-medium text-base mb-8">
+            501 chemin de Senoche, 74140 Ballaison
+          </p>
+          <div className="grid gap-4 text-left text-base text-stone-500 sm:grid-cols-2 max-w-xl w-full">
+            <div className="rounded-2xl bg-white p-5 shadow-sm border border-stone-100">
+              <p className="text-stone-400 text-xs uppercase tracking-widest mb-2">À votre arrivée</p>
               Des rafraîchissements vous attendent le temps de l&apos;arrivée des mariés.
             </div>
-            <div className="rounded-2xl bg-white/70 p-4">
-              <ParkingCircle className="mb-2 size-4 text-stone-500" />
-              Vous pourrez vous garer sur place selon les indications.
+            <div className="rounded-2xl bg-white p-5 shadow-sm border border-stone-100">
+              <p className="text-stone-400 text-xs uppercase tracking-widest mb-2">Parking</p>
+              Vous pourrez vous garer sur place selon les indications prévues.
             </div>
           </div>
 
@@ -231,9 +232,7 @@ export default function Home() {
               <CarouselNext className="right-2" />
             </Carousel>
           </div>
-          <p className="mt-4 max-w-xl text-sm text-muted-foreground">
-            Les vues du ciel permettront de repérer l&apos;accès, le parking et les espaces prévus.
-          </p>
+          
         </section>
 
         <Separator className="max-w-xs mx-auto" />
@@ -253,18 +252,20 @@ export default function Home() {
           </div>
 
           {/* Texte */}
-          <div className="flex flex-col items-center text-center flex-1 pt-2">
-            <div className="flex items-center justify-center size-12 rounded-full bg-stone-100 mb-6">
-              <Tent className="size-5 text-stone-500" />
+          <div className="flex flex-col items-start text-left flex-1 pt-2">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center justify-center size-10 rounded-full bg-stone-100">
+                <Tent className="size-4 text-stone-500" />
+              </div>
+              <p className="text-xs uppercase tracking-[0.25em] text-stone-400">Sur place · En soirée</p>
             </div>
-            <h2 className="font-serif text-3xl font-light mb-4">Le Camping ⛺</h2>
-            <Separator className="w-16 mb-6" />
-            <p className="text-muted-foreground text-base leading-relaxed">
-              Un champ faisant partie du domaine sera à disposition pour ceux qui souhaitent camper sur place.
-              On sera aussi avec nos tentes ;)
+            <h2 className="font-serif text-4xl font-light mb-5 text-foreground leading-snug">Le Camping ⛺</h2>
+            <div className="w-12 h-px bg-stone-300 mb-6" />
+            <p className="text-stone-600 text-lg leading-loose mb-4">
+              Un champ du domaine sera à disposition pour ceux qui souhaitent camper sur place — on sera aussi là avec nos tentes&nbsp;!
             </p>
-            <p className="text-muted-foreground text-sm mt-4">
-              Vous pouvez venir avec votre tente et l&apos;installer pendant la journée quand vous pouvez !
+            <p className="text-stone-400 text-sm leading-relaxed border-l-2 border-stone-200 pl-4">
+              Vous pouvez venir avec votre tente et l&apos;installer dès votre arrivée, pendant la journée.
             </p>
           </div>
 
@@ -273,19 +274,19 @@ export default function Home() {
         <Separator className="max-w-xs mx-auto" />
 
         {/* ── ENFANTS ── */}
-        <section id="enfants" className="flex flex-col items-center px-6 py-20 text-center max-w-2xl mx-auto w-full">
-          <div className="flex items-center justify-center size-12 rounded-full bg-stone-100 mb-6">
-            <Baby className="size-5 text-stone-500" />
+        <section id="enfants" className="flex flex-col items-center px-6 py-20 text-center max-w-xl mx-auto w-full">
+          <div className="flex items-center justify-center size-10 rounded-full bg-stone-100 mb-5">
+            <Baby className="size-4 text-stone-500" />
           </div>
-          <h2 className="font-serif text-3xl font-light mb-4">Pour les plus petits 🧸</h2>
-          <Separator className="w-16 mb-6" />
-          <p className="text-muted-foreground text-base leading-relaxed">
-            Des chambres d&apos;hôtes situées dans le domaine seront utilisées pour installer les plus petits durant
-            la journée et la soirée.
+          <p className="text-xs uppercase tracking-[0.25em] text-stone-400 mb-3">Sur place</p>
+          <h2 className="font-serif text-4xl font-light mb-5 text-foreground">Pour les plus petits 🧸</h2>
+          <div className="w-12 h-px bg-stone-300 mb-7" />
+          <p className="text-stone-600 text-lg leading-loose mb-6">
+            Des chambres d&apos;hôtes du domaine seront dédiées aux plus petits pour la journée et la soirée.
           </p>
-          <div className="flex items-center gap-2 mt-5 text-stone-400">
-            <BedDouble className="size-4" />
-            <span className="text-sm">Une salle dédiée aux enfants leur permettra aussi d&apos;avoir leur espace à eux.</span>
+          <div className="flex items-start gap-3 bg-white rounded-2xl border border-stone-100 shadow-sm px-5 py-4 text-left">
+            <BedDouble className="size-5 text-stone-400 mt-0.5 shrink-0" />
+            <p className="text-stone-500 text-base leading-relaxed">Une salle dédiée aux enfants leur permettra aussi d&apos;avoir leur propre espace pour jouer et se reposer.</p>
           </div>
         </section>
 
@@ -295,27 +296,30 @@ export default function Home() {
         <section id="cagnotte" className="flex flex-col lg:flex-row items-center lg:items-start gap-12 px-6 py-20 max-w-4xl mx-auto w-full">
 
           {/* Texte */}
-          <div className="flex flex-col items-center text-center flex-1 pt-2">
-            <div className="flex items-center justify-center size-12 rounded-full bg-stone-100 mb-6">
-              <Gift className="size-5 text-stone-500" />
+          <div className="flex flex-col items-start text-left flex-1 pt-2">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center justify-center size-10 rounded-full bg-stone-100">
+                <Gift className="size-4 text-stone-500" />
+              </div>
+              <p className="text-xs uppercase tracking-[0.25em] text-stone-400">Un cadeau avec amour</p>
             </div>
-            <h2 className="font-serif text-3xl font-light mb-4">Cagnotte voyage</h2>
-            <Separator className="w-16 mb-6" />
-            <p className="text-muted-foreground text-base leading-relaxed mb-8">
+            <h2 className="font-serif text-4xl font-light mb-5 text-foreground leading-snug">Cagnotte<br />voyage de noces</h2>
+            <div className="w-12 h-px bg-stone-300 mb-6" />
+            <p className="text-stone-600 text-lg leading-loose mb-3">
               Votre présence à nos côtés est déjà le plus beau des cadeaux.
-              Mais pour celles et ceux qui le souhaitent, nous avons mis en place une cagnotte afin de nous aider
-              à réaliser notre voyage de noces.
+            </p>
+            <p className="text-stone-500 text-base leading-loose mb-8">
+              Pour celles et ceux qui le souhaitent, nous avons mis en place une cagnotte pour nous aider à réaliser notre voyage de noces.
             </p>
             <a
               href="#cagnotte"
-              className="inline-flex items-center gap-2 rounded-full bg-stone-800 px-7 py-3 text-sm font-medium text-white transition-colors hover:bg-stone-700"
+              className="inline-flex items-center gap-2 rounded-full bg-stone-800 px-7 py-3 text-sm font-medium text-white transition-colors hover:bg-stone-700 mb-6"
             >
               <Heart className="size-4" />
               Lien vers la cagnotte à venir
             </a>
-            <p className="text-muted-foreground text-sm mt-6 max-w-sm">
-              Nous aurons également une urne le jour J pour ceux qui préfèrent nous laisser une enveloppe,
-              ou bien un petit mot, une lettre ou une jolie attention.
+            <p className="text-stone-400 text-sm leading-relaxed border-l-2 border-stone-200 pl-4">
+              Une urne sera également présente le jour J pour ceux qui préfèrent nous laisser une enveloppe, un mot ou une jolie attention.
             </p>
           </div>
 
