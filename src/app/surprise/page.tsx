@@ -1,53 +1,26 @@
-import { Button } from "@/components/ui/button"
-import { Sparkles } from "lucide-react"
-
-const stands = [
-  "Stand Famille",
-  "Stand Haute Savoie",
-  "Stand Sports",
-  "Stand Voyage",
-  "Stand Souvenirs",
-]
+import Image from "next/image"
 
 export default function SurprisePage() {
   return (
-    <main className="flex flex-1 flex-col items-center px-6 py-24">
+    <main className="flex flex-1 flex-col items-center justify-center px-6 py-24 text-center">
 
-      <div className="flex items-center justify-center size-10 rounded-full bg-stone-100 mb-5">
-        <Sparkles className="size-4 text-stone-500" />
-      </div>
-
-      <p className="text-xs uppercase tracking-[0.25em] text-stone-400 mb-3 text-center">Activité du soir</p>
-      <h1 className="font-serif text-4xl sm:text-5xl font-light text-foreground leading-snug mb-5 text-center max-w-xl">
-        Et si vous appreniez encore quelque chose sur nous&nbsp;? 👀
+      <p className="text-xs uppercase tracking-[0.25em] text-stone-400 mb-3">À venir</p>
+      <h1 className="font-serif text-4xl sm:text-5xl font-light text-foreground leading-snug mb-5 max-w-xl">
+        Une surprise se prépare&nbsp;✨
       </h1>
       <div className="w-12 h-px bg-stone-300 mb-8" />
+      <p className="text-stone-500 text-base sm:text-lg leading-loose max-w-sm mb-12">
+        Elle vous sera dévoilée le jour J.
+      </p>
 
-      <div className="max-w-lg w-full flex flex-col gap-4 mb-10">
-        <p className="text-stone-600 text-lg leading-loose text-center">
-          Un petit jeu vous attend, avec des questions liées aux différents stands de la soirée.
-        </p>
-        <div className="flex flex-col gap-3">
-          <p className="text-stone-500 text-base leading-loose">
-            Cliquez, explorez, répondez… et amusez-vous&nbsp;! Un classement se mettra à jour au fil de la soirée.
-          </p>
-          <p className="text-stone-400 text-sm leading-relaxed border-l-2 border-stone-200 pl-4">
-            N&apos;hésitez pas à être attentifs aux détails des stands — quelques indices pourraient s&apos;y cacher.
-          </p>
-        </div>
-      </div>
-
-      <div className="flex max-w-2xl flex-wrap justify-center gap-3">
-        {stands.map((stand) => (
-          <Button
-            key={stand}
-            variant="outline"
-            size="lg"
-            className="rounded-full border-stone-200 bg-white px-6 text-stone-600 shadow-sm hover:bg-stone-50 hover:border-stone-300 transition-all"
-          >
-            {stand}
-          </Button>
-        ))}
+      <div className="w-full max-w-sm rounded-2xl overflow-hidden shadow-lg">
+        <Image
+          src="/surprise.png"
+          alt="La surprise se prépare"
+          width={400}
+          height={400}
+          className="w-full h-auto block object-cover"
+        />
       </div>
 
     </main>
