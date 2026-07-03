@@ -154,7 +154,7 @@ export default function Home() {
               </div>
               <p className="text-xs uppercase tracking-[0.25em] text-stone-400">La mairie · 13h45</p>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl font-light mb-5 text-foreground leading-snug">Cérémonie à la Mairie</h2>
+            <h2 className="font-serif text-3xl sm:text-4xl font-light mb-5 text-foreground leading-snug">Cérémonie à la Mairie de Thonon-les-Bains</h2>
        
             <div className="w-12 h-px bg-stone-300 mb-6" />
             <p className="text-stone-600 text-base sm:text-lg leading-loose mb-4">

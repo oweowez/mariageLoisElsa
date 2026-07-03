@@ -37,7 +37,7 @@ export default function PlaylistPage() {
           </p>
         </div>
         <a
-          href="https://open.spotify.com/playlist/2DlJ0bcKlYVqobbQXn3l6U?si=oj9ZHtTyQne2QKm_2Ar3dg&pt=1eb7f4f4d32318528ee6d94cb735edc6&pi=d1ZCdv0bTFi_Q"
+          href="https://open.spotify.com/playlist/2DlJ0bcKlYVqobbQXn3l6U?si=lIC6oL26Sa-0-FBaBo8khQ&pi=G27ShOCrQAqRU&pt=b5499a4af1e67e5c8c37aba8d06ff9ca"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 rounded-full bg-stone-800 px-7 py-3 text-sm font-medium text-white transition-colors hover:bg-stone-700"
