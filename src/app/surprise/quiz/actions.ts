@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { supabaseAdmin } from "@/lib/supabase/admin";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
 import { getQuestion } from "@/lib/quiz/questions";
 import { PARTICIPANT_COOKIE, getCurrentParticipant } from "@/lib/quiz/db";
 import { isSurpriseRevealed } from "@/lib/quiz/reveal";
@@ -24,7 +24,7 @@ export async function registerParticipant(
     return { error: "Merci de renseigner votre prénom et votre nom." };
   }
 
-  const { data, error } = await supabaseAdmin
+  const { data, error } = await getSupabaseAdmin()
     .from("quiz_participants")
     .insert({ first_name: firstName, last_name: lastName })
     .select("id")
@@ -71,7 +71,7 @@ export async function submitAnswer(
   const isCorrect = answerIndex === question.correctIndex;
 
   // insert simple : la contrainte unique empêche de répondre deux fois
-  const { error } = await supabaseAdmin.from("quiz_answers").insert({
+  const { error } = await getSupabaseAdmin().from("quiz_answers").insert({
     participant_id: participant.id,
     stand_id: question.standId,
     question_id: question.id,

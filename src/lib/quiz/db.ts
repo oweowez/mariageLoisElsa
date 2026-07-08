@@ -1,6 +1,6 @@
 import "server-only";
 import { cookies } from "next/headers";
-import { supabaseAdmin } from "@/lib/supabase/admin";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
 
 export const PARTICIPANT_COOKIE = "quiz_participant_id";
 
@@ -22,7 +22,7 @@ export async function getCurrentParticipant(): Promise<Participant | null> {
   const id = cookieStore.get(PARTICIPANT_COOKIE)?.value;
   if (!id) return null;
 
-  const { data } = await supabaseAdmin
+  const { data } = await getSupabaseAdmin()
     .from("quiz_participants")
     .select("id, first_name, last_name")
     .eq("id", id)
@@ -32,7 +32,7 @@ export async function getCurrentParticipant(): Promise<Participant | null> {
 }
 
 export async function getAnswers(participantId: string): Promise<Answer[]> {
-  const { data, error } = await supabaseAdmin
+  const { data, error } = await getSupabaseAdmin()
     .from("quiz_answers")
     .select("stand_id, question_id, answer_index, is_correct")
     .eq("participant_id", participantId);
@@ -50,7 +50,7 @@ export type LeaderboardEntry = {
 };
 
 export async function getLeaderboard(): Promise<LeaderboardEntry[]> {
-  const { data, error } = await supabaseAdmin
+  const { data, error } = await getSupabaseAdmin()
     .from("quiz_participants")
     .select("id, first_name, last_name, quiz_answers(is_correct)");
 
