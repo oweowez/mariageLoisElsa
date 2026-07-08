@@ -1,9 +1,13 @@
-import { Camera } from "lucide-react"
+import { Camera, Sparkles } from "lucide-react"
 import Image from "next/image"
+import { PreparationGallery } from "@/components/preparation-gallery"
+import { getPreparationPhotos } from "@/lib/photos-preparation"
 
 export default function PhotosPage() {
+  const preparationPhotos = getPreparationPhotos()
+
   return (
-    <main className="flex flex-1 items-center justify-center px-6 py-24">
+    <main className="flex flex-1 flex-col items-center px-4 sm:px-6 py-16 sm:py-24 w-full">
 
       <div className="flex flex-col sm:flex-row items-center gap-12 max-w-4xl w-full">
 
@@ -47,6 +51,33 @@ export default function PhotosPage() {
         </div>
 
       </div>
+
+      <section className="mt-20 sm:mt-28 w-full max-w-7xl">
+        <header className="flex flex-col items-center text-center mb-10 sm:mb-14">
+          <div className="flex items-center justify-center size-10 rounded-full bg-[#D4AF62]/10 mb-5">
+            <Sparkles className="size-4 text-[#D4AF62]" />
+          </div>
+
+          <p className="text-xs uppercase tracking-[0.25em] text-stone-400 mb-3">
+            Coulisses du grand jour
+          </p>
+          <h2 className="font-serif text-4xl sm:text-5xl font-light text-foreground leading-snug mb-5 max-w-xl">
+            Préparatifs du mariage
+          </h2>
+          <div className="w-12 h-px bg-[#D4AF62]/60 mb-6" />
+          <p className="text-stone-500 text-base sm:text-lg leading-loose max-w-md">
+            Un aperçu des petits moments qui préparent notre plus beau jour.
+          </p>
+          {preparationPhotos.length > 0 && (
+            <p className="mt-4 text-xs text-stone-400 tracking-wide">
+              {preparationPhotos.length} photo
+              {preparationPhotos.length > 1 ? "s" : ""}
+            </p>
+          )}
+        </header>
+
+        <PreparationGallery photos={preparationPhotos} />
+      </section>
 
     </main>
   )
